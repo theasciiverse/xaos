@@ -91,7 +91,7 @@ linux_init (__AA_CONST struct aa_hardware_params *p, __AA_CONST void *none,
       sprintf (fname, "/dev/vcsa%i", vt);
       vc[0] = fopen (fname, "w+");
       if (vc[0] == NULL)
-	vc[0] = fopen (tmp, "w"), readonly = 1;
+	vc[0] = fopen (fname, "w"), readonly = 1;
       nvcs = 1;
     }
   if (vc[0] == NULL)
