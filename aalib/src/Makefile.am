@@ -57,7 +57,7 @@ libaa_la_SOURCES= \
        aaattrs.c \
        aaputpixel.c \
        aarecfunc.c 
-libaa_la_LDFLAGS=@LDFLAGS@ -version-info 1:4:0
+libaa_la_LDFLAGS=@LDFLAGS@ -version-info 1:4:0 -Wl,--version-script=aalib.1.4.ver
 bin_PROGRAMS=aainfo aatest aafire aasavefont
 
 aainfo_LDADD= libaa.la
