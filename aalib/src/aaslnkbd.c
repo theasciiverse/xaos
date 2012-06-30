@@ -76,6 +76,7 @@ static int slang_getchar(aa_context * c1, int wait)
 #endif
     struct timeval tv;
     fd_set readfds;
+    int evflag;
 
     if (wait) {
 	setjmp(buf);
@@ -124,7 +125,10 @@ static int slang_getchar(aa_context * c1, int wait)
 	    return (AA_NONE);
 	}
 	if ((gpm_fd > -1) && (FD_ISSET(gpm_fd, &readfds))) {
-	    if (Gpm_GetEvent(&ev) && gpm_handler
+	    evflag = Gpm_GetEvent(&ev);
+	    if ( evflag < 0 )
+		return AA_NONE;
+	    if ( evflag == 1 && gpm_handler
 		&& ((*gpm_handler) (&ev, gpm_data))) {
 		gpm_hflag = 1;
 		return AA_MOUSE;
