@@ -36,8 +36,14 @@ static int curses_init(__AA_CONST struct aa_hardware_params *p, __AA_CONST void 
     dest->supported=AA_NORMAL_MASK;
 #ifdef HAVE_TERMATTRS
     a = termattrs();
-    if (a & A_DIM)
+    if (has_colors()) {
+	start_color();
+	init_pair(1, COLOR_BLACK, COLOR_BLACK);
 	dest->supported |= AA_DIM_MASK;
+    } else {
+	if (a & A_DIM)
+	    dest->supported |= AA_DIM_MASK;
+    }
     if (a & A_BOLD)
 	dest->supported |= AA_BOLD_MASK;
     if (a & A_BOLD)
@@ -86,7 +92,12 @@ static void curses_setattr(aa_context * c, int attr)
 	attrset(A_NORMAL);
 	break;
     case AA_DIM:
-	attrset(A_DIM);
+	if (has_colors()) {
+	    attrset(A_BOLD);
+	    attron(COLOR_PAIR(1));
+	} else {
+	    attrset(A_DIM);
+	}
 	break;
     case AA_BOLD:
 	attrset(A_BOLD);
