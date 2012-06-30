@@ -8,7 +8,7 @@
 @settitle An ascii-art library
 @dircategory Libraries
 @direntry
- * AA-lib: (aalib).              An ASCII-art graphics library
+* AA-lib: (aalib).              An ASCII-art graphics library
 @end direntry
 
 
