@@ -5,7 +5,7 @@ exec_prefix=@exec_prefix@
 exec_prefix_set=no
 
 usage="\
-Usage: aalib-config [--prefix[=DIR]] [--exec-prefix[=DIR]] [--version] [--libs] [--cflags]"
+Usage: aalib-config [--prefix[=DIR]] [--exec-prefix[=DIR]] [--version] [--libs] [--static-libs] [--cflags]"
 
 if test $# -eq 0; then
       echo "${usage}" 1>&2
@@ -49,11 +49,14 @@ while test $# -gt 0; do
       ;;
 @ENABLE_SHARED_TRUE@    --libs)
 @ENABLE_SHARED_TRUE@      libdirs="-L@libdir@ @AALIB_RLD_FLAGS@"
-@ENABLE_SHARED_TRUE@      echo $libdirs @AALIB_LIBS@
+@ENABLE_SHARED_TRUE@      echo $libdirs -laa
 @ENABLE_SHARED_TRUE@      ;;
 @ENABLE_STATIC_TRUE@@ENABLE_SHARED_TRUE@    --static-libs)
 @ENABLE_STATIC_TRUE@@ENABLE_SHARED_FALSE@    --libs|--static-libs)
 @ENABLE_STATIC_TRUE@      libdirs="-L@libdir@ @AALIB_RLD_FLAGS@"
+@ENABLE_STATIC_TRUE@      if [ "`uname -s`" = Linux ]; then
+@ENABLE_STATIC_TRUE@          printf "%s" "-lgpm "
+@ENABLE_STATIC_TRUE@      fi
 @ENABLE_STATIC_TRUE@      echo $libdirs @AALIB_LIBS@ 
 @ENABLE_STATIC_TRUE@      ;;
     *)
