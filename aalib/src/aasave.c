@@ -270,13 +270,13 @@ __AA_CONST struct aa_format aa_roff_format =
     NORMALPRINTS,
     {"",
      "",
-     "\n.B ",
+     "\\fB",
      "",
      ""
     },
     {"",
      "",
-     "\n",
+     "\\fP",
      "",
      ""
     },
