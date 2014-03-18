@@ -200,7 +200,7 @@ static void vt_to_here(int num)
 static int rawmode_init(void)
 {
     if (!closed)
-	return;
+       return (1);
     mypid = getpid();
     if (tty_fd == -1) {
 	tty_fd = fileno(stdin);
