@@ -98,9 +98,9 @@ __AA_CONST char * __AA_CONST aa_help =
 "Monitor parameters:\n"
 "  -dimmul <val>  multiply factor for dim color (5.3)\n"
 "  -boldmul <val> multiply factor for dim color (2.7)\n"
-"  The default parameters are set to fit my monitor (15\" goldstar)\n"
-"  With contrast set to maximum and bright set to make black black\n"
-"  This values depends at quality of your monitor (and setting of controls\n"
-"  Defaultd settings should be OK for most PC monitors. But ideal monitor\n"
-"  Needs dimmul=1.71 boldmul=1.43. For example monitor used by SGI is very\n"
-"  close to this values. Also old 14\" vga monitors needs higher values.\n";
+"  The default parameters are based on my 15\" Goldstar monitor,)\n"
+"  With contrast set to maximum, and brightness to the minimum.\n"
+"  This values depend on your particular monitor and how the controls are set.\n"
+"  Default settings should be OK for most PC monitors, but an ideal monitor\n"
+"  needs dimmul=1.71 boldmul=1.43. SGI monitors, for example, are very\n"
+"  close to this values. Old 14\" VGA monitors need higher values.\n";
