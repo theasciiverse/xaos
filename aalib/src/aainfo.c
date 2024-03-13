@@ -1,3 +1,4 @@
+#include <stdlib.h>
 
 #include "aalib.h"
 #include "aaint.h"

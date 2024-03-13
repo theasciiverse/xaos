@@ -22,6 +22,7 @@
 #include <linux/vt.h>		/* for VT stuff - nah, really? :) */
 #include <string.h>
 #include <setjmp.h>
+#include <stdlib.h>
 #ifdef GPM_MOUSEDRIVER
 #include <gpm.h>
 #endif

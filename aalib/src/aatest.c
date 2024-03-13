@@ -1,3 +1,5 @@
+#include <stdlib.h>
+#include <string.h>
 #include "aalib.h"
 int main(int argc, char **argv)
 {
