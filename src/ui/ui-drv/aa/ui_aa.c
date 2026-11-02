@@ -93,6 +93,12 @@ aa_processevents (int wait, int *mx, int *my, int *mb, int *k)
 {
     int ch;
     static int keys;
+    /* keyboards that report no key releases (curses: every terminal) get
+       each arrow press as a press and release in one, so it still steps
+       the zoom speed or the iterations once, and the terminal's key repeat
+       steps again while the key is held */
+    int pulse = 0;
+    int releases = c->kbddriver->flags & AA_SENDRELEASE;
     do {
         if ((ch = aa_getevent (c, wait)) != AA_NONE && ch != AA_MOUSE && ch != AA_RESIZE && ch < 256)
             ui_key (ch);
@@ -111,32 +117,40 @@ aa_processevents (int wait, int *mx, int *my, int *mb, int *k)
                 break;
             case AA_LEFT:
                 ui_key (UIKEY_LEFT);
-                if (c->kbddriver->flags & AA_SENDRELEASE)
+                if (releases)
                     keys |= 1;
+                else
+                    pulse |= 1;
                 break;
             case AA_LEFT | AA_RELEASE:
                 keys &= ~1;
                 break;
             case AA_RIGHT:
                 ui_key (UIKEY_RIGHT);
-                if (c->kbddriver->flags & AA_SENDRELEASE)
+                if (releases)
                     keys |= 2;
+                else
+                    pulse |= 2;
                 break;
             case AA_RIGHT | AA_RELEASE:
                 keys &= ~2;
                 break;
             case AA_UP:
                 ui_key (UIKEY_UP);
-                if (c->kbddriver->flags & AA_SENDRELEASE)
+                if (releases)
                     keys |= 4;
+                else
+                    pulse |= 4;
                 break;
             case AA_UP | AA_RELEASE:
                 keys &= ~4;
                 break;
             case AA_DOWN:
                 ui_key (UIKEY_DOWN);
-                if (c->kbddriver->flags & AA_SENDRELEASE)
+                if (releases)
                     keys |= 8;
+                else
+                    pulse |= 8;
                 break;
             case AA_DOWN | AA_RELEASE:
                 keys &= ~8;
@@ -147,7 +161,7 @@ aa_processevents (int wait, int *mx, int *my, int *mb, int *k)
     while (ch != AA_NONE);
     *mx = mousex * 2;
     *my = mousey * 2;
-    *k = keys;
+    *k = keys | pulse;
     *mb = 0;
     if (mouseb & AA_BUTTON1)
         *mb |= BUTTON1;
