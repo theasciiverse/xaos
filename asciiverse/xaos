@@ -1,0 +1,13 @@
+#!/bin/sh
+# Starts XaoS. It finds its help, tutorials, examples and tutorial texts
+# beside the binary it was started as, so it is started by its full path:
+# lib/ beside this script in an av install, /usr/lib/xaos in a system
+# package. The folder you start it in stays the one it saves to.
+# av links ~/.local/bin/xaos to this file, so follow that link first.
+self=$(readlink "$0" 2>/dev/null || printf '%s' "$0")
+case "$self" in /*) ;; *) self="$(dirname "$0")/$self" ;; esac
+dir=$(cd "$(dirname "$self")" && pwd)
+if [ -x "$dir/lib/xaos" ]; then
+	exec "$dir/lib/xaos" "$@"
+fi
+exec /usr/lib/xaos/xaos "$@"

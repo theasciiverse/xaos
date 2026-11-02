@@ -1,79 +1,44 @@
-XaoS
-====
+# XaoS in the terminal
 
-Original Authors: [Jan Hubicka](http://www.ucw.cz/~hubicka/) and [Thomas Marsh](https://www.linkedin.com/in/thomasmarsh).
-See [CREDITS](CREDITS.md) file for a complete list of contributors.
+[XaoS](https://github.com/xaos-project/XaoS) is a real-time fractal zoomer:
+hold a mouse button and fly into the Mandelbrot set, smoothly and without
+waiting for each picture to be drawn. This is XaoS 3.7 with its text-mode
+driver, which draws in ASCII art through AAlib, for the
+[Asciiverse](https://github.com/theasciiverse) catalog.
 
-Introduction
-------------
+XaoS is by Jan Hubicka, Thomas Marsh and the XaoS contributors (see
+CREDITS.md), first released in 1996. AAlib is by Jan Hubicka, Kamil Toman
+and others. What changed here, and why, is in PATCHES.md; upstream's own
+README is README.upstream.md.
 
-XaoS is a realtime interactive fractal zoomer. This means that it lets you
-zoom smoothly into any place in the fractal you choose without the long 
-calculation required by most other fractal generators. It has many other 
-features too, like different fractal types, autopilot, special coloring
-modes, random palette generation, color cycling, etc.
+## Playing
 
-Website
--------
+- **Left button**: hold to zoom in towards the pointer; drag to steer.
+- **Right button**: hold to zoom out. **Middle button** (or both): drag to
+  move.
+- **Arrow keys**: up and down change the zoom speed, left and right the
+  number of iterations.
+- **a**: autopilot. **Enter**: the menu bar. **h**: help. **u**: undo.
+- **m**: from the Mandelbrot set to the Julia set under the pointer, and
+  back. **1** to **0**: the first ten fractal types (the rest are in the
+  Fractal menu).
+- **c** and **f**: outside and inside colouring. **p**: a random palette.
+  **y**: colour cycling (left and right set its speed).
+- **e**: filters. **q**: quit.
 
-Visit the [XaoS website](http://xaos.sourceforge.net/)
-for the latest news and downloads.  Source code is available on 
-[GitHub](https://github.com/xaos-project/XaoS).
+The Help menu has animated tutorials: an introduction to fractals, the
+fractal types, XaoS's features, and more, several in other languages too.
 
-Documentation
--------------
+## Building
 
-Documentation is maintained on the [GitHub Wiki](https://github.com/xaos-project/XaoS/wiki).
+```sh
+docker run --rm -v "$PWD":/src -w /src alpine:3.22 sh asciiverse/build.sh   # Linux, static
+CC_ARCH=arm64 sh asciiverse/build.sh                                       # macOS
+sh asciiverse/stage.sh                                                     # the archive, in stage/
+```
 
-For installation instructions see the [INSTALL](INSTALL.md) file.
+## Licence
 
-User Support
-------------
-
-XaoS is a community-supported free software project. 
-The [xaos-users](http://groups.google.com/group/xaos-users) Google Group 
-provides a place for XaoS users to help each other get the most out of XaoS. 
-XaoS developers also monitor this discussion and answer questions from time to time.
-
-You can browse the archives freely but to prevent spam, you must join the group 
-in order to post. Google Groups provides options for participation from a 
-traditional mailing list to a completely web-based forum, so you don’t have to 
-get emails if you don’t want to.
-
-Reporting Bugs
---------------
-
-Issues are tracked on [GitHub](https://github.com/xaos-project/XaoS/issues).
-If you think you have found a bug in XaoS or have an idea for a new feature, 
-please let us know about it. 
-
-XaoS is developed on a volunteer basis and the developers work on it in their spare time. 
-Therefore, we can’t guarantee that issues will be addressed in a certain timeframe. If 
-you are able to fix a bug yourself, pull requests are very welcome.
-
-Supported Platforms
--------------------
-
-Starting from version 3.5, the supported platforms are:
-
-  * POSIX (Linux, FreeBSD, Solaris, etc.)
-  * Microsoft Windows (XP or later)
-  * Mac OS X (10.4 or later)
-  
-License
--------
-
-Copyright (C) 1996-2019 XaoS Contributors
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
+GPL-3.0-or-later as built (XaoS is GPL-2.0-or-later, see COPYING; it is
+linked with AAlib, LGPL-2.0-or-later, see aalib/COPYING, and GSL,
+GPL-3.0-or-later).

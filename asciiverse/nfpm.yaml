@@ -1,0 +1,61 @@
+# System packages (.deb, .rpm, Arch) for XaoS, built by nfpm from the same
+# static Linux build as the av archive. The release workflow sets VERSION,
+# RELEASE (our packaging release) and ARCH (amd64 or arm64).
+#
+# XaoS and its data go to /usr/lib/xaos; the start script in /usr/bin runs
+# it from there. Debian and Fedora name their own XaoS 4 package xaos, so
+# these conflict with it.
+# No .desktop file on purpose: av is the one place titles are started from,
+# so Asciiverse packages never add menu entries.
+name: xaos
+arch: ${ARCH}
+platform: linux
+version: ${VERSION}
+release: ${RELEASE}
+section: graphics
+priority: optional
+maintainer: Asciiverse <packages@asciiverse.sh>
+vendor: Asciiverse
+homepage: https://github.com/theasciiverse/xaos
+license: GPL-3.0-or-later AND LGPL-2.0-or-later
+conflicts:
+  - xaos
+description: |
+  Real-time fractal zooming in the terminal, drawn in ASCII art.
+  Hold a mouse button to fly into the Mandelbrot set, 28 other
+  fractals and their Julia sets, or a formula of your own, or let the
+  autopilot find the way; with colour cycling, filters, animated
+  tutorials and a built-in help.
+  XaoS 3.7 by Jan Hubicka, Thomas Marsh and the XaoS contributors, with
+  AAlib, packaged by Asciiverse.
+contents:
+  - src: stage/xaos
+    dst: /usr/bin/xaos
+    file_info: { mode: 0755 }
+  - src: stage/lib/xaos
+    dst: /usr/lib/xaos/xaos
+    file_info: { mode: 0755 }
+  - src: stage/lib/help
+    dst: /usr/lib/xaos/help
+    type: tree
+  - src: stage/lib/tutorial
+    dst: /usr/lib/xaos/tutorial
+    type: tree
+  - src: stage/lib/catalogs
+    dst: /usr/lib/xaos/catalogs
+    type: tree
+  - src: stage/lib/examples
+    dst: /usr/lib/xaos/examples
+    type: tree
+  - src: COPYING
+    dst: /usr/share/doc/xaos/copyright
+    file_info: { mode: 0644 }
+  - src: aalib/COPYING
+    dst: /usr/share/doc/xaos/COPYING.AAlib
+    file_info: { mode: 0644 }
+  - src: README.md
+    dst: /usr/share/doc/xaos/README.md
+    file_info: { mode: 0644 }
+  - src: PATCHES.md
+    dst: /usr/share/doc/xaos/PATCHES.md
+    file_info: { mode: 0644 }
