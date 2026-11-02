@@ -23,43 +23,43 @@
 extern "C" {
 #endif
 
-sfarg *sfadd(sfarg * const p);	/*  +  */
-sfarg *sfsub(sfarg * const p);	/*  -  */
-sfarg *sfmul(sfarg * const p);	/*  *  */
-sfarg *sfdiv(sfarg * const p);	/*  /  */
-sfarg *sfsin(sfarg * const p);	/* sin */
-sfarg *sfcos(sfarg * const p);	/* cos */
-sfarg *sftan(sfarg * const p);	/* tan */
-sfarg *sfcot(sfarg * const p);	/* ctan */
-sfarg *sfasin(sfarg * const p);	/* asin */
-sfarg *sfacos(sfarg * const p);	/* acos */
-sfarg *sfatan(sfarg * const p);	/* atan */
-sfarg *sfacot(sfarg * const p);	/* actan */
-sfarg *sfatan2(sfarg * const p);	/* atan2 */
-sfarg *sfsinh(sfarg * const p);	/* sinh */
-sfarg *sfcosh(sfarg * const p);	/* cosh */
-sfarg *sftanh(sfarg * const p);	/* tanh */
-sfarg *sfcoth(sfarg * const p);	/* ctanh */
-sfarg *sfexp(sfarg * const p);	/* exp */
-sfarg *sflog(sfarg * const p);	/* log */
-sfarg *sflog10(sfarg * const p);	/* log10 */
-sfarg *sflog2(sfarg * const p);	/* log2 */
-sfarg *sflogN(sfarg * const p);	/* logN */
-sfarg *sfpow(sfarg * const p);	/* csflx pow */
-sfarg *sfpowd(sfarg * const p);	/* double pow */
-sfarg *sfpowi(sfarg * const p);	/* double pow */
-sfarg *sfpowdc(sfarg * const p);	/* double to csflx pow */
-sfarg *sfsqr(sfarg * const p);	/* sqr */
-sfarg *sfsqrt(sfarg * const p);	/* sqrt */
-sfarg *sfrtni(sfarg * const p);	/* rtni */
-sfarg *sfinv(sfarg * const p);	/* cinv */
-sfarg *sfceil(sfarg * const p);	/* ceil */
-sfarg *sffloor(sfarg * const p);	/* floor */
-sfarg *sfabs(sfarg * const p);	/* abs - |z| */
-sfarg *sfre(sfarg * const p);	/* RE */
-sfarg *sfim(sfarg * const p);	/* IM */
-sfarg *sfrabs(sfarg * const p);	/* abs - real numbers */
-sfarg *sfrand(sfarg * const p);	/* rand */
+sfarg *sfadd(sfarg * const p, void *payload);	/*  +  */
+sfarg *sfsub(sfarg * const p, void *payload);	/*  -  */
+sfarg *sfmul(sfarg * const p, void *payload);	/*  *  */
+sfarg *sfdiv(sfarg * const p, void *payload);	/*  /  */
+sfarg *sfsin(sfarg * const p, void *payload);	/* sin */
+sfarg *sfcos(sfarg * const p, void *payload);	/* cos */
+sfarg *sftan(sfarg * const p, void *payload);	/* tan */
+sfarg *sfcot(sfarg * const p, void *payload);	/* ctan */
+sfarg *sfasin(sfarg * const p, void *payload);	/* asin */
+sfarg *sfacos(sfarg * const p, void *payload);	/* acos */
+sfarg *sfatan(sfarg * const p, void *payload);	/* atan */
+sfarg *sfacot(sfarg * const p, void *payload);	/* actan */
+sfarg *sfatan2(sfarg * const p, void *payload);	/* atan2 */
+sfarg *sfsinh(sfarg * const p, void *payload);	/* sinh */
+sfarg *sfcosh(sfarg * const p, void *payload);	/* cosh */
+sfarg *sftanh(sfarg * const p, void *payload);	/* tanh */
+sfarg *sfcoth(sfarg * const p, void *payload);	/* ctanh */
+sfarg *sfexp(sfarg * const p, void *payload);	/* exp */
+sfarg *sflog(sfarg * const p, void *payload);	/* log */
+sfarg *sflog10(sfarg * const p, void *payload);	/* log10 */
+sfarg *sflog2(sfarg * const p, void *payload);	/* log2 */
+sfarg *sflogN(sfarg * const p, void *payload);	/* logN */
+sfarg *sfpow(sfarg * const p, void *payload);	/* csflx pow */
+sfarg *sfpowd(sfarg * const p, void *payload);	/* double pow */
+sfarg *sfpowi(sfarg * const p, void *payload);	/* double pow */
+sfarg *sfpowdc(sfarg * const p, void *payload);	/* double to csflx pow */
+sfarg *sfsqr(sfarg * const p, void *payload);	/* sqr */
+sfarg *sfsqrt(sfarg * const p, void *payload);	/* sqrt */
+sfarg *sfrtni(sfarg * const p, void *payload);	/* rtni */
+sfarg *sfinv(sfarg * const p, void *payload);	/* cinv */
+sfarg *sfceil(sfarg * const p, void *payload);	/* ceil */
+sfarg *sffloor(sfarg * const p, void *payload);	/* floor */
+sfarg *sfabs(sfarg * const p, void *payload);	/* abs - |z| */
+sfarg *sfre(sfarg * const p, void *payload);	/* RE */
+sfarg *sfim(sfarg * const p, void *payload);	/* IM */
+sfarg *sfrabs(sfarg * const p, void *payload);	/* abs - real numbers */
+sfarg *sfrand(sfarg * const p, void *payload);	/* rand */
 /*const eval*/
 void sfcPI(sfNumber * cnst);
 void sfcPI2(sfNumber * cnst);

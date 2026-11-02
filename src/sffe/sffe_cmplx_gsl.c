@@ -76,108 +76,108 @@ const char sfcnames[sfvarscount][5] =
 const cfptr sfcvals[sfvarscount] =
 { sfcPI, sfcPI2, sfc2PI, sfcE, sfcI, sfcRND };
 
-sfarg *sfadd(sfarg * const p) {	/* + */
+sfarg *sfadd(sfarg * const p, void *payload) {	/* + */
 	sfvalue(p) = gsl_complex_add(sfvalue(sfaram2(p)), sfvalue(sfaram1(p)));
 	return sfaram2(p);
 };
 
-sfarg *sfsub(sfarg * const p) {	/* - */
+sfarg *sfsub(sfarg * const p, void *payload) {	/* - */
 	sfvalue(p) = gsl_complex_sub(sfvalue(sfaram2(p)), sfvalue(sfaram1(p)));
 	return sfaram2(p);
 };
 
-sfarg *sfmul(sfarg * const p) {	/* *  */
+sfarg *sfmul(sfarg * const p, void *payload) {	/* *  */
  sfvalue(p) = gsl_complex_mul(sfvalue(sfaram2(p)), sfvalue(sfaram1(p)));
  return sfaram2(p);
 };
 
-sfarg *sfdiv(sfarg * const p) {	/*  /   */
+sfarg *sfdiv(sfarg * const p, void *payload) {	/*  /   */
 	sfvalue(p) = gsl_complex_div(sfvalue(sfaram2(p)), sfvalue(sfaram1(p)));
 	return sfaram2(p);
 };
 
 
-sfarg *sfsin(sfarg * const p) {	/* sin */
+sfarg *sfsin(sfarg * const p, void *payload) {	/* sin */
 	sfvalue(p) = gsl_complex_sin(sfvalue(sfaram1(p)));
 	return sfaram1(p);
 };
 
-sfarg *sfcos(sfarg * const p) {	/* cos */
+sfarg *sfcos(sfarg * const p, void *payload) {	/* cos */
 	sfvalue(p) = gsl_complex_cos(sfvalue(sfaram1(p)));
 	return sfaram1(p);
 };
 
-sfarg *sftan(sfarg * const p) {	/* tan */
+sfarg *sftan(sfarg * const p, void *payload) {	/* tan */
 	sfvalue(p) = gsl_complex_tan(sfvalue(sfaram1(p)));
 	return sfaram1(p);
 };
 
-sfarg *sfcot(sfarg * const p) {	/* ctan */
+sfarg *sfcot(sfarg * const p, void *payload) {	/* ctan */
 	sfvalue(p) = gsl_complex_cot(sfvalue(sfaram1(p)));
 	return sfaram1(p);
 };
 
-sfarg *sfasin(sfarg * const p) {	/* asin */
+sfarg *sfasin(sfarg * const p, void *payload) {	/* asin */
 	sfvalue(p) = gsl_complex_arcsin(sfvalue(sfaram1(p)));
 	return sfaram1(p);
 };
 
-sfarg *sfacos(sfarg * const p) {	/* acos */
+sfarg *sfacos(sfarg * const p, void *payload) {	/* acos */
 	sfvalue(p) = gsl_complex_arccos(sfvalue(sfaram1(p)));
 	return sfaram1(p);
 };
 
-sfarg *sfatan(sfarg * const p) {	/* atan */
+sfarg *sfatan(sfarg * const p, void *payload) {	/* atan */
 	sfvalue(p) = gsl_complex_arctan(sfvalue(sfaram1(p)));
 	return sfaram1(p);
 };
 
-sfarg *sfacot(sfarg * const p) {	/* actan */
+sfarg *sfacot(sfarg * const p, void *payload) {	/* actan */
 	sfvalue(p) = gsl_complex_arccot(sfvalue(sfaram1(p)));
 	return sfaram1(p);
 };
 
-sfarg *sfatan2(sfarg * const p) {	/* atan2 */
+sfarg *sfatan2(sfarg * const p, void *payload) {	/* atan2 */
 	return sfaram2(p);
 };
 
-sfarg *sfsinh(sfarg * const p) {	/* sinh */
+sfarg *sfsinh(sfarg * const p, void *payload) {	/* sinh */
 	sfvalue(p) = gsl_complex_sinh(sfvalue(sfaram1(p)));
 	return sfaram1(p);
 };
 
-sfarg *sfcosh(sfarg * const p) {	/* cosh */
+sfarg *sfcosh(sfarg * const p, void *payload) {	/* cosh */
 	sfvalue(p) = gsl_complex_cosh(sfvalue(sfaram1(p)));
 	return sfaram1(p);
 };
 
-sfarg *sftanh(sfarg * const p) {	/* tanh */
+sfarg *sftanh(sfarg * const p, void *payload) {	/* tanh */
 	sfvalue(p) = gsl_complex_tanh(sfvalue(sfaram1(p)));
 	return sfaram1(p);
 };
 
-sfarg *sfcoth(sfarg * const p) {	/* ctanh */
+sfarg *sfcoth(sfarg * const p, void *payload) {	/* ctanh */
 	sfvalue(p) = gsl_complex_coth(sfvalue(sfaram1(p)));
 	return sfaram1(p);
 };
 
 
-sfarg *sfexp(sfarg * const p) {	/* exp */
+sfarg *sfexp(sfarg * const p, void *payload) {	/* exp */
 	sfvalue(p) = gsl_complex_exp(sfvalue(sfaram1(p)));
 	return sfaram1(p);
 };
 
-sfarg *sflog(sfarg * const p) {	/* log */
+sfarg *sflog(sfarg * const p, void *payload) {	/* log */
 	sfvalue(p) = gsl_complex_log(sfvalue(sfaram1(p)));
 	return sfaram1(p);
 };
 
-sfarg *sflog10(sfarg * const p) {	/* log10 */
+sfarg *sflog10(sfarg * const p, void *payload) {	/* log10 */
 	sfvalue(p) = gsl_complex_log10(sfvalue(sfaram1(p)));
 	return sfaram1(p);
 };
 
-sfarg *sflog2(sfarg * const p) {	/* log2 */
+sfarg *sflog2(sfarg * const p, void *payload) {	/* log2 */
 	sfNumber base;
 	real(base) = 2;
 	imag(base) = 0;
@@ -185,33 +185,33 @@ sfarg *sflog2(sfarg * const p) {	/* log2 */
 	return sfaram1(p);
 };
 
-sfarg *sflogN(sfarg * const p) {	/* logN */
+sfarg *sflogN(sfarg * const p, void *payload) {	/* logN */
 	sfvalue(p) = gsl_complex_log_b(sfvalue(sfaram1(p)), sfvalue(sfaram2(p)));
 	return sfaram2(p);
 };
 
 
-sfarg *sfpow(sfarg * const p) {	/* cmplx pow */
+sfarg *sfpow(sfarg * const p, void *payload) {	/* cmplx pow */
 	sfvalue(p) = gsl_complex_pow(sfvalue(sfaram2(p)), sfvalue(sfaram1(p)));
 	return sfaram2(p);
 };
 
-sfarg *sfpowd(sfarg * const p) {	/* int pow */
+sfarg *sfpowd(sfarg * const p, void *payload) {	/* int pow */
 	sfvalue(p) = gsl_complex_pow_real(sfvalue(sfaram2(p)), GSL_REAL(sfvalue(sfaram1(p))));
 	return sfaram2(p);
 };
 
-sfarg *sfsqr(sfarg * const p) {	/* sqr */
+sfarg *sfsqr(sfarg * const p, void *payload) {	/* sqr */
 	sfvalue(p) = gsl_complex_pow(sfvalue(sfaram1(p)), sfvalue(sfaram1(p)));
 	return sfaram1(p);
 };
 
-sfarg *sfsqrt(sfarg * const p) {	/* sqrt */
+sfarg *sfsqrt(sfarg * const p, void *payload) {	/* sqrt */
 	sfvalue(p) = gsl_complex_sqrt(sfvalue(sfaram1(p)));
 	return sfaram1(p);
 };
 
-sfarg *sfrtni(sfarg * const p) {	/* rtni */
+sfarg *sfrtni(sfarg * const p, void *payload) {	/* rtni */
 	double nrz =
 		pow(gsl_complex_abs(sfvalue(sfaram3(p))),
 		1.0 / (double) (int) real(sfvalue(sfaram2(p))));
@@ -224,28 +224,28 @@ sfarg *sfrtni(sfarg * const p) {	/* rtni */
 	return sfaram3(p);
 };
 
-sfarg *sfinv(sfarg * const p) {	/* cinv */
+sfarg *sfinv(sfarg * const p, void *payload) {	/* cinv */
 	sfvalue(p) = gsl_complex_inverse(sfvalue(sfaram1(p)));
 	return sfaram1(p);
 };
 
-sfarg *sfceil(sfarg * const p) {	/* ceil */
+sfarg *sfceil(sfarg * const p, void *payload) {	/* ceil */
 	//sfvalue(p) = ceil( sfvalue( sfaram1(p) ) );
 	return sfaram1(p);
 };
 
-sfarg *sffloor(sfarg * const p) {	/* floor */
+sfarg *sffloor(sfarg * const p, void *payload) {	/* floor */
 	//sfvalue(p) = floor( sfvalue( sfaram1(p) ) );
 	return sfaram1(p);
 };
 
-sfarg *sfabs(sfarg * const p) {	/* abs - |z| */
+sfarg *sfabs(sfarg * const p, void *payload) {	/* abs - |z| */
 	GSL_REAL(sfvalue(p)) = gsl_complex_abs(sfvalue(sfaram1(p)));
 	GSL_IMAG(sfvalue(p)) = 0.0;
 	return sfaram1(p);
 };
 
-sfarg *sfrabs(sfarg * const p) {	/* abs - real numbers */
+sfarg *sfrabs(sfarg * const p, void *payload) {	/* abs - real numbers */
 	GSL_REAL(sfvalue(p)) = GSL_REAL(sfvalue(sfaram1(p)));
 	if (GSL_REAL(sfvalue(p)) < 0)
 		GSL_REAL(sfvalue(p)) = -GSL_REAL(sfvalue(p));
@@ -253,19 +253,19 @@ sfarg *sfrabs(sfarg * const p) {	/* abs - real numbers */
 	return sfaram1(p);
 };
 
-sfarg *sfre(sfarg * const p) {	/* RE */
+sfarg *sfre(sfarg * const p, void *payload) {	/* RE */
 	GSL_REAL(sfvalue(p)) = GSL_REAL(sfvalue(sfaram1(p)));
 	GSL_IMAG(sfvalue(p)) = 0.0;
 	return sfaram1(p);
 };
 
-sfarg *sfim(sfarg * const p) {	/* IM */
+sfarg *sfim(sfarg * const p, void *payload) {	/* IM */
 	GSL_REAL(sfvalue(p)) = GSL_IMAG(sfvalue(sfaram1(p)));
 	GSL_IMAG(sfvalue(p)) = 0.0;
 	return sfaram1(p);
 };
 
-sfarg *sfrand(sfarg * const p) {	/* rand */
+sfarg *sfrand(sfarg * const p, void *payload) {	/* rand */
 	GSL_REAL(sfvalue(p)) = GSL_REAL(sfvalue(sfaram1(p))) * (double) rand() / (double) RAND_MAX;
 	GSL_IMAG(sfvalue(p)) = 0;
 	return sfaram1(p);
