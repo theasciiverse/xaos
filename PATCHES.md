@@ -96,4 +96,11 @@ ncurses are under their own permissive licences.
 - `.github/workflows/release.yml`: static Linux (x86_64, aarch64) and
   macOS (x86_64, arm64), plus the packages and SHA256SUMS, on our tags
   (`v3.7-av.N`).
+- `asciiverse/record-preview.py`, `asciiverse/preview.xaf`,
+  `asciiverse/xaos.cast`: the catalog preview, 100x30, about 26 s, XaoS
+  playing its own animation script: the whole set, a dive into Elephant
+  Valley and back, a Julia set morphing into Douady's rabbit, colour
+  cycling. Recorded with hub's castrec and re-encoded at 25 fps by
+  `asciiverse/cast-cap-fps.py` (from demos/tarts, plus the REP escape
+  ncurses uses).
 - `README.md` is ours; upstream's is README.upstream.md.
