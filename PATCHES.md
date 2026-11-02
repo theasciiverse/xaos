@@ -87,7 +87,9 @@ ncurses are under their own permissive licences.
 - `asciiverse/build.sh`, `asciiverse/include/`: the build above.
 - `asciiverse/xaos`: the start script. XaoS finds its help, tutorials and
   examples beside the binary it was started as, so the script starts it by
-  its full path and leaves the folder you started in as the one it saves to.
+  its full path. XaoS saves to the folder it runs in: the one you started
+  it from, or your home folder when that is the install folder (av starts
+  titles there), so saved files outlive an uninstall.
 - `asciiverse/stage.sh`: the archive, with the start script, `lib/xaos`
   and `lib/{help,tutorial,catalogs,examples}` (the examples in one folder,
   as upstream's `make install` does), COPYING, COPYING.AAlib, README.md
