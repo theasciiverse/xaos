@@ -30,16 +30,16 @@ static int curses_init(struct aa_context *context, int mode)
     if (!mousemask( /*ALL_MOUSE_EVENTS */ BUTTON1_PRESSED | BUTTON1_RELEASED | BUTTON2_PRESSED | BUTTON2_RELEASED | BUTTON3_PRESSED | BUTTON3_RELEASED | REPORT_MOUSE_POSITION, NULL))
 	return 0;
     /* ncurses asks xterm-style terminals for presses and releases only
-       (mode 1000); ask for motion while a button is held too (1002), so
-       a drag reaches REPORT_MOUSE_POSITION and the pointer follows it */
+       (mode 1000); ask for all motion too (1003), so drags and plain
+       moves reach REPORT_MOUSE_POSITION and the pointer follows them */
     if (xterm_mouse())
-	putp("\033[?1002h"), fflush(stdout);
+	putp("\033[?1003h"), fflush(stdout);
     return 1;
 }
 static void curses_uninit(aa_context * c)
 {
     if (xterm_mouse())
-	putp("\033[?1002l"), fflush(stdout);
+	putp("\033[?1003l"), fflush(stdout);
     mousemask(0, NULL);
 }
 

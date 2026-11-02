@@ -32,10 +32,12 @@ binary for Linux and macOS. It is in `aalib/`, built up in the usual order:
   but `getmaxyx` gives the rows first, so the curses driver swapped width
   and height: a 100x30 terminal got 30 columns by 100 rows. Fixed in
   `aalib/src/aacurses.c`. (Debian's own libaa1 has the same bug.)
-- **Dragging steers the zoom.** ncurses asks xterm-style terminals for
-  presses and releases only, so the point XaoS zooms towards stayed where
-  the button went down. AAlib's curses mouse driver also asks for motion
-  while a button is held (mode 1002) and turns it off on the way out.
+- **The pointer follows the mouse.** ncurses asks xterm-style terminals
+  for presses and releases only, so XaoS saw the pointer only where a
+  button went down: a drag did not steer the zoom, fast Julia mode did not
+  follow the mouse, and moving to the top row did not open the menu bar.
+  AAlib's curses mouse driver also asks for all motion (mode 1003) and
+  turns it off on the way out.
 - **Arrow keys work.** XaoS treats them as held keys (up and down for the
   zoom speed, left and right for the iterations, or the cycling speed),
   which the aa driver only reported from keyboards that send key
