@@ -3,7 +3,6 @@
 #define HOMEDIR
 
 #define HELP_URL "https://github.com/xaos-project/XaoS/wiki"
-#define WEB_URL "http://xaos.sourceforge.net/"
 
 #ifdef __BEOS__
 #define MAIN_FUNCTION be_main
